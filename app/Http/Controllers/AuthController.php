@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -48,20 +47,26 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            // $request->session()->regenerate();
+            $request->session()->regenerate();
             $token = $request->user()->createToken('token');
 
-            return response(['token' => $token->plainTextToken]);
+            return response(['message' => "User successfully logged in.",])->header('Set-Cookie', 'token=' . $token->plainTextToken);
         }
 
-        return response(['error' => "The provided credentials do not match our records."]);
+        return response(['errors' => ["email" => "The provided credentials do not match our records."]], 400);
     }
 
     /**
      * Logout current user.
      */
-    public function logout(string $id)
+    public function logout(Request $request)
     {
-        //
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return response(['message' => "User successfully logged out.",]);
     }
 }

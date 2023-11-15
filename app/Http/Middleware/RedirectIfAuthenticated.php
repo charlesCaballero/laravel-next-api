@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
 
                 $token = $request->user()->createToken('token');
 
-                return response(['token' => $token->plainTextToken]);
+                return response(['message' => $token->plainTextToken]);
             }
         }
 
