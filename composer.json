@@ -1,5 +1,5 @@
 {
-    "name": "Laravel/Next API - Authentication",
+    "name": "laravel/next",
     "type": "project",
     "description": "This is a laravel api designed to be used with NextJS 13. This utilizes laravel sanctum for token based authentication.",
     "keywords": [
