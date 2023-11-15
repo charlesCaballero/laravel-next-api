@@ -1,8 +1,11 @@
 {
-    "name": "laravel/laravel",
+    "name": "Laravel/Next API - Authentication",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "This is a laravel api designed to be used with NextJS 13. This utilizes laravel sanctum for token based authentication.",
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.1",
